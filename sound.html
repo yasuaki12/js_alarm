@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+  <!--!のあとにtab→基本タグ入力できる-->
+<html lang="ja">
+  <!--en→jaに変更-->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カップ麺タイマー</title>
+</head>
+<body>
+    <h1 id="time">経過時間</h1>
+    <input type="text" id="sec">
+    <button id="start">開始</button>
+    <audio src="alarmsound.mp3" id="sound"></audio>
+      <!--idの定義-->
+
+    <script>
+      //jsコードスタート
+      //3/17 18:00
+      //参考動画:アラーム機能を作る_js入門
+      //:https://www.youtube.com/watch?v=OgV2cAg3Q8E&t=1104s
+
+      //画面：タイマー秒数。スタートボタン、経過時間表示
+      //スタートクリックイベント
+      const time  = document.querySelector("#time");
+      const sec   = document.querySelector("#sec");
+      const start = document.querySelector("#start");
+      const sound = document.querySelector("#sound");
+      let count   = 0;
+      const s     = 1000;
+     
+      start.onclick = function(){
+        const set_id = setInterval(function(){
+          count++;
+          time.innerHTML=count;
+          if(count==sec.value){
+            sound.play();
+            clearInterval();
+          }
+      },s);//1000
+    }
+    </script>
+</body>
+</html>
